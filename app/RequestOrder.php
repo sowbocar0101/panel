@@ -1,0 +1,25 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class RequestOrder extends Model
+{
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'depart_name','destination_name','status','status_del','user_id','latitude_depart','longitude_depart','latitude_arrivee','longitude_arrivee','place','number_poeple','distance','duree','montant','trajet','statut_paiement','date_retour','heure_retour','statut_round','id_vehicule_rental','id_user_app','id_conducteur','id_payment_method','statut'
+    ];
+
+    public static function getRequestOrder(){
+        return RequestOrder::where('status_del',1)->get();
+    }
+
+    public static function getRequestOrderByStatus($status){
+        return RequestOrder::where(['status_del' => 1, 'statut' => $status])->get();
+    }
+}

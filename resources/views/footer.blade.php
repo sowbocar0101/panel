@@ -1,0 +1,1 @@
+<footer class="footer"> {{ App\Setting::select('footer')->first()->footer }} </footer>
